@@ -1,19 +1,15 @@
 //
 // server.js
 //
-let http = require('http');
+var express = require('express')
+var app = express()
 
 const port = process.env.PORT || 3000;
-
-http.createServer(function (request, response){
-	console.log('Er was een request');
-	response.writeHead(200, {'Content-Type': 'application/json'});
-	let result = {
-		firstname: 'Robin',
-		lastname: "Schellius"
-	};
-	response.write(JSON.stringify(result));
-	response.end();
-}).listen(port);
-
-console.log('De server luistert op port ' + port);
+ 
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+ 
+app.listen(port, () => {
+	console.log('De server draait op port ' + port)
+})
